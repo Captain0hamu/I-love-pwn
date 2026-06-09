@@ -34,3 +34,4 @@ RUN git clone --depth 1 https://github.com/hugsy/gef.git /opt/gef \
 WORKDIR /work
 
 CMD ["/bin/bash"]
+

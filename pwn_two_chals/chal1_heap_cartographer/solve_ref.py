@@ -6,8 +6,7 @@ import time
 
 BIN = './chall'
 
-def p64(x):
-    return struct.pack('<Q', x)
+p64 = lambda x : struct.pack('<Q', x)
 
 p = subprocess.Popen([BIN], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 

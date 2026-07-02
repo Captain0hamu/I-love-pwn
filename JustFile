@@ -1,0 +1,60 @@
+set shell := ["bash", "-cu"]
+
+default FILE:
+    @just all "{{FILE}}"
+
+all FILE:
+    @echo "===== readelf -hW {{FILE}} ====="
+    readelf -hW "{{FILE}}"
+    @echo
+    @echo "===== readelf -lW {{FILE}} ====="
+    readelf -lW "{{FILE}}"
+    @echo
+    @echo "===== readelf -sW {{FILE}} ====="
+    readelf -sW "{{FILE}}"
+    @echo
+    @echo "===== objdump -d -M intel {{FILE}} ====="
+    objdump -d -M intel "{{FILE}}"
+    @echo
+    @echo "===== nm -D {{FILE}} ====="
+    nm -D "{{FILE}}" || true
+
+header FILE:
+    @echo "===== readelf -hW {{FILE}} ====="
+    readelf -hW "{{FILE}}"
+
+segments FILE:
+    @echo "===== readelf -lW {{FILE}} ====="
+    readelf -lW "{{FILE}}"
+
+symbols FILE:
+    @echo "===== readelf -sW {{FILE}} ====="
+    readelf -sW "{{FILE}}"
+
+disasm FILE:
+    @echo "===== objdump -d -M intel {{FILE}} ====="
+    objdump -d -M intel "{{FILE}}"
+
+dynsym FILE:
+    @echo "===== nm -D {{FILE}} ====="
+    nm -D "{{FILE}}" || true
+
+dump FILE:
+    @OUT="elfdump-$(basename "{{FILE}}").txt"; \
+    { \
+      echo "===== readelf -hW {{FILE}} ====="; \
+      readelf -hW "{{FILE}}"; \
+      echo; \
+      echo "===== readelf -lW {{FILE}} ====="; \
+      readelf -lW "{{FILE}}"; \
+      echo; \
+      echo "===== readelf -sW {{FILE}} ====="; \
+      readelf -sW "{{FILE}}"; \
+      echo; \
+      echo "===== objdump -d -M intel {{FILE}} ====="; \
+      objdump -d -M intel "{{FILE}}"; \
+      echo; \
+      echo "===== nm -D {{FILE}} ====="; \
+      nm -D "{{FILE}}" || true; \
+    } | tee "$OUT"; \
+    echo "saved: $OUT"

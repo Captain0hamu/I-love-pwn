@@ -1,0 +1,23 @@
+services:
+  heap-cartographer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: heap-cartographer
+    working_dir: /work
+    volumes:
+      - .:/work
+      - ${HOME}/.bashrc_pwn:/home/pwn/.host_bashrc:ro
+      - heap-cartographer-home:/home/pwn
+    ports:
+      - "1337:1337"
+    stdin_open: true
+    tty: true
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    command: /bin/bash
+
+volumes:
+  heap-cartographer-home:

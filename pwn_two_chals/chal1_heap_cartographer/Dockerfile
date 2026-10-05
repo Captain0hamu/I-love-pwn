@@ -3,7 +3,7 @@ FROM debian:trixie
 ENV DEBIAN_FRONTEND=noninteractive
 ENV USER=pwn
 ENV HOME=/home/pwn
-ENV WORKDIR=/work
+ENV WORKDIR=/home/pwn/wor
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -85,12 +85,12 @@ if [ -f /home/pwn/.host_bashrc ]; then
     source /home/pwn/.host_bashrc
 fi
 
-cd /work 2>/dev/null || true
+cd /home/pwn/work 2>/dev/null || true
 EOF
 
 RUN chown ${USER}:${USER} /home/${USER}/.bashrc
 
-WORKDIR /work
+WORKDIR /home/pwn/work
 USER ${USER}
 
 CMD ["/bin/bash"]

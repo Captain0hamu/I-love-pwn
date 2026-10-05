@@ -4,10 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: heap-cartographer
-    working_dir: /work
+    working_dir: /home/pwn/work
     volumes:
-      - .:/work
+      - .:/home/pwn/work
       - ${HOME}/.bashrc_pwn:/home/pwn/.host_bashrc:ro
+      - ${HOME}/.tmux.conf:/home/pwn/.tmux.conf:ro
       - heap-cartographer-home:/home/pwn
     ports:
       - "1337:1337"

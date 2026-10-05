@@ -57,8 +57,3 @@ The challenge provides an `inspect` option because the point is not to brute-for
 
 Trigger menu option `6` after overwriting `target_hook` with `win_hook`.
 
-## Reference solve
-
-```bash
-python3 solve_ref.py
-```

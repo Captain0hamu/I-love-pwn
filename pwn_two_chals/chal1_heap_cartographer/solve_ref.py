@@ -90,6 +90,7 @@ sl('owned')
 
 # Demonstrate shell command execution, then exit the shell.
 sl('id')
+sl('whoami')
 sl('exit')
 time.sleep(0.2)
 p.kill()

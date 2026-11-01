@@ -1,2 +1,18 @@
 pwn-college
 *.zip
+
+# Local research and credentials
+manaba_research/
+manaba_recon/
+.env
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Generated challenge builds and archives
+/pwn_two_chals/chal1_heap_cartographer/solve
+/pwn_two_chals/chal1_heap_cartographer/heap_cartographer.tar.zst
+/securedb/dist/
+/vuln_notepad/easy
+/vuln_notepad/vuln_notepad

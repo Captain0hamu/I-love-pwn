@@ -1,0 +1,7 @@
+*
+!packaging/
+!packaging/Dockerfile
+!chal1_heap_cartographer/
+!chal1_heap_cartographer/chal.c
+!chal2_fmt_lighthouse/
+!chal2_fmt_lighthouse/chal.c

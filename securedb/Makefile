@@ -7,7 +7,7 @@ CFLAGS  = -O0 -Wall -Wextra
 HARDENED= -fstack-protector-all -pie -fpie -z relro -z now -z noexecstack
 EASY    = -fno-stack-protector -no-pie -z execstack
 
-.PHONY: all hardened easy clean run patchelf
+.PHONY: all hardened easy clean run patchelf package dist
 
 # Full protections (intended challenge binary)
 all: hardened
@@ -31,8 +31,18 @@ patchelf: securedb
 run: securedb
 	./securedb
 
+package:
+	python3 package_dist.py
+
+# Reproduce the glibc 2.31 build and create the player archive.
+dist:
+	./setup_glibc231.sh
+	./build_securedb_glibc231.sh
+	python3 package_dist.py
+
 clean:
 	rm -f securedb securedb_easy
+	rm -rf dist
 
 
 # ──────────────────────────────────────────────────────────────────

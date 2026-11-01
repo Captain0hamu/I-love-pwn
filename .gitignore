@@ -1,18 +1,54 @@
-pwn-college
-*.zip
-
 # Local research and credentials
 manaba_research/
 manaba_recon/
 .env
+.env.*
 
 # Python caches
 __pycache__/
 *.py[cod]
 
-# Generated challenge builds and archives
-/pwn_two_chals/chal1_heap_cartographer/solve
-/pwn_two_chals/chal1_heap_cartographer/heap_cartographer.tar.zst
+# External repositories fetched by scripts/fetch-resources.sh
+external/
+pwn-college/
+
+# Nix / analysis leftovers
+result
+result-*
+elfdump-*.txt
+core
+core.*
+
+# Generated archives and object files
+*.zip
+*.o
+*.out
+*.tar.zst
+
+# ── securedb ────────────────────────────────────────────────────────
+/securedb/.glibc231/
+/securedb/build/
 /securedb/dist/
-/vuln_notepad/easy
+/securedb/securedb
+/securedb/securedb_easy
+/securedb/libc.so.6
+/securedb/ld-2.31.so
+
+# ── vuln_notepad ────────────────────────────────────────────────────
+/vuln_notepad/build/
+/vuln_notepad/dist/
 /vuln_notepad/vuln_notepad
+/vuln_notepad/easy
+/vuln_notepad/distribution/vuln_notepad
+/vuln_notepad/distribution/libc.so.6
+/vuln_notepad/distribution/ld-linux-x86-64.so.2
+
+# ── pwn_two_chals ───────────────────────────────────────────────────
+/pwn_two_chals/chal1_heap_cartographer/chall
+/pwn_two_chals/chal1_heap_cartographer/solve
+/pwn_two_chals/chal1_heap_cartographer/libc.so.6
+/pwn_two_chals/chal1_heap_cartographer/ld-linux-x86-64.so.2
+/pwn_two_chals/chal1_heap_cartographer/heap_cartographer.tar.zst
+/pwn_two_chals/chal2_fmt_lighthouse/chall
+/pwn_two_chals/chal2_fmt_lighthouse/libc.so.6
+/pwn_two_chals/chal2_fmt_lighthouse/ld-linux-x86-64.so.2

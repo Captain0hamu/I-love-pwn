@@ -23,6 +23,13 @@ FILES = (
 
 
 def main():
+    missing = [source for source, _, _ in FILES if not (ROOT / source).is_file()]
+    if missing:
+        raise SystemExit(
+            "missing build inputs:\n  " + "\n  ".join(missing)
+            + "\nrun ./setup_glibc231.sh and ./build_securedb_glibc231.sh first"
+        )
+
     # Read all inputs before replacing an existing release.
     entries = [(name, mode, (ROOT / source).read_bytes())
                for source, name, mode in FILES]

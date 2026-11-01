@@ -99,6 +99,7 @@ void read_body(char *buf, size_t limit) {
 /* ------------------------------------------------------------------ */
 
 void add_note(void) {
+    char body[NOTE_SIZE];
     if (note_count >= MAX_NOTES) {
         puts("  [!] Note limit reached.");
         return;
@@ -112,7 +113,9 @@ void add_note(void) {
 
     printf("  Body  (max %d chars): ", NOTE_SIZE - 1);
     fflush(stdout);
-    read_body(n->body, NOTE_SIZE);      /* ← BOF ここで発生 */
+    memset(body, 0, sizeof(body));
+    read_body(body, sizeof(body));       /* ← BOF ここで発生 */
+    memcpy(n->body, body, sizeof(body));
     n->body[NOTE_SIZE - 1] = '\0';
 
     n->pinned = 0;
@@ -219,6 +222,7 @@ void delete_note(void) {
 
 int main(void) {
     /* バッファリング無効化 (CTF定番) */
+    setvbuf(stdin, NULL, _IONBF, 0);
     setvbuf(stdout, NULL, _IONBF, 0);
     setvbuf(stderr, NULL, _IONBF, 0);
 
@@ -227,6 +231,7 @@ int main(void) {
     while (1) {
         print_menu();
         int choice = read_int();
+        if (choice < 0) return 0;
 
         switch (choice) {
             case 1: add_note();    break;

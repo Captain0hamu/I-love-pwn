@@ -37,7 +37,18 @@ Expected properties:
 
 ## Build
 
-```bash
+From the parent directory, generate the runtime files with Debian 13:
+
+```sh
+cd ..
+./build.sh
+cd chal1_heap_cartographer
+```
+
+Or build inside the development container:
+
+```sh
+docker compose run --rm heap-cartographer
 make clean all
 ```
 

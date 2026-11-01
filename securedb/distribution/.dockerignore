@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!securedb
+!libc.so.6
+!ld-2.31.so
+!run.sh
+!flag.txt
